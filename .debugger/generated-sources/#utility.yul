@@ -341,6 +341,28 @@
 
     }
 
+    function store_literal_in_memory_e82235c0dd21bacdd149903e0055732cee893fcf7a28e4b14e3028b199f8f39d(memPtr) {
+
+        mstore(add(memPtr, 0), "Only the msg.sender can deposit ")
+
+        mstore(add(memPtr, 32), "for themselves")
+
+    }
+
+    function abi_encode_t_stringliteral_e82235c0dd21bacdd149903e0055732cee893fcf7a28e4b14e3028b199f8f39d_to_t_string_memory_ptr_fromStack(pos) -> end {
+        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 46)
+        store_literal_in_memory_e82235c0dd21bacdd149903e0055732cee893fcf7a28e4b14e3028b199f8f39d(pos)
+        end := add(pos, 64)
+    }
+
+    function abi_encode_tuple_t_stringliteral_e82235c0dd21bacdd149903e0055732cee893fcf7a28e4b14e3028b199f8f39d__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {
+        tail := add(headStart, 32)
+
+        mstore(add(headStart, 0), sub(tail, headStart))
+        tail := abi_encode_t_stringliteral_e82235c0dd21bacdd149903e0055732cee893fcf7a28e4b14e3028b199f8f39d_to_t_string_memory_ptr_fromStack( tail)
+
+    }
+
     function abi_encode_tuple_t_address_t_uint256_t_uint256__to_t_address_t_uint256_t_uint256__fromStack_reversed(headStart , value2, value1, value0) -> tail {
         tail := add(headStart, 96)
 
@@ -352,25 +374,23 @@
 
     }
 
-    function store_literal_in_memory_a7f23dd4048d19fd0eece4aa6881ec98efce6442136bc87a40629710cbe9e73f(memPtr) {
+    function store_literal_in_memory_3e76f273c719bb7d23db533a2dc9a822ae7d899fcd42eb8910272e24764e8296(memPtr) {
 
-        mstore(add(memPtr, 0), "Vault: Amount must be greater th")
-
-        mstore(add(memPtr, 32), "an 0")
+        mstore(add(memPtr, 0), "Amount must be greater than 0")
 
     }
 
-    function abi_encode_t_stringliteral_a7f23dd4048d19fd0eece4aa6881ec98efce6442136bc87a40629710cbe9e73f_to_t_string_memory_ptr_fromStack(pos) -> end {
-        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 36)
-        store_literal_in_memory_a7f23dd4048d19fd0eece4aa6881ec98efce6442136bc87a40629710cbe9e73f(pos)
-        end := add(pos, 64)
+    function abi_encode_t_stringliteral_3e76f273c719bb7d23db533a2dc9a822ae7d899fcd42eb8910272e24764e8296_to_t_string_memory_ptr_fromStack(pos) -> end {
+        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 29)
+        store_literal_in_memory_3e76f273c719bb7d23db533a2dc9a822ae7d899fcd42eb8910272e24764e8296(pos)
+        end := add(pos, 32)
     }
 
-    function abi_encode_tuple_t_stringliteral_a7f23dd4048d19fd0eece4aa6881ec98efce6442136bc87a40629710cbe9e73f__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {
+    function abi_encode_tuple_t_stringliteral_3e76f273c719bb7d23db533a2dc9a822ae7d899fcd42eb8910272e24764e8296__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {
         tail := add(headStart, 32)
 
         mstore(add(headStart, 0), sub(tail, headStart))
-        tail := abi_encode_t_stringliteral_a7f23dd4048d19fd0eece4aa6881ec98efce6442136bc87a40629710cbe9e73f_to_t_string_memory_ptr_fromStack( tail)
+        tail := abi_encode_t_stringliteral_3e76f273c719bb7d23db533a2dc9a822ae7d899fcd42eb8910272e24764e8296_to_t_string_memory_ptr_fromStack( tail)
 
     }
 
@@ -426,6 +446,15 @@
 
     }
 
+    function abi_encode_tuple_t_uint256_t_address__to_t_uint256_t_address__fromStack_reversed(headStart , value1, value0) -> tail {
+        tail := add(headStart, 64)
+
+        abi_encode_t_uint256_to_t_uint256_fromStack(value0,  add(headStart, 0))
+
+        abi_encode_t_address_to_t_address_fromStack(value1,  add(headStart, 32))
+
+    }
+
     function checked_add_t_uint256(x, y) -> sum {
         x := cleanup_t_uint256(x)
         y := cleanup_t_uint256(y)
@@ -435,12 +464,45 @@
 
     }
 
-    function abi_encode_tuple_t_uint256_t_address__to_t_uint256_t_address__fromStack_reversed(headStart , value1, value0) -> tail {
-        tail := add(headStart, 64)
+    function store_literal_in_memory_59f9c67101a37f9db24f54ece8673b59c871730a03153b6edd52308f154ea955(memPtr) {
+
+        mstore(add(memPtr, 0), "Only the msg.sender can withdraw")
+
+        mstore(add(memPtr, 32), " for themselves")
+
+    }
+
+    function abi_encode_t_stringliteral_59f9c67101a37f9db24f54ece8673b59c871730a03153b6edd52308f154ea955_to_t_string_memory_ptr_fromStack(pos) -> end {
+        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 47)
+        store_literal_in_memory_59f9c67101a37f9db24f54ece8673b59c871730a03153b6edd52308f154ea955(pos)
+        end := add(pos, 64)
+    }
+
+    function abi_encode_tuple_t_stringliteral_59f9c67101a37f9db24f54ece8673b59c871730a03153b6edd52308f154ea955__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {
+        tail := add(headStart, 32)
+
+        mstore(add(headStart, 0), sub(tail, headStart))
+        tail := abi_encode_t_stringliteral_59f9c67101a37f9db24f54ece8673b59c871730a03153b6edd52308f154ea955_to_t_string_memory_ptr_fromStack( tail)
+
+    }
+
+    function abi_encode_tuple_t_uint256_t_address_t_address__to_t_uint256_t_address_t_address__fromStack_reversed(headStart , value2, value1, value0) -> tail {
+        tail := add(headStart, 96)
 
         abi_encode_t_uint256_to_t_uint256_fromStack(value0,  add(headStart, 0))
 
         abi_encode_t_address_to_t_address_fromStack(value1,  add(headStart, 32))
+
+        abi_encode_t_address_to_t_address_fromStack(value2,  add(headStart, 64))
+
+    }
+
+    function checked_sub_t_uint256(x, y) -> diff {
+        x := cleanup_t_uint256(x)
+        y := cleanup_t_uint256(y)
+        diff := sub(x, y)
+
+        if gt(diff, x) { panic_error_0x11() }
 
     }
 

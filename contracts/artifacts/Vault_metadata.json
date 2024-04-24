@@ -8,7 +8,7 @@
 			{
 				"inputs": [
 					{
-						"internalType": "contract IERC20",
+						"internalType": "address",
 						"name": "_aUSDC",
 						"type": "address"
 					}
@@ -36,6 +36,11 @@
 					}
 				],
 				"name": "AddressInsufficientBalance",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "DEPRECATED_FUNCTION",
 				"type": "error"
 			},
 			{
@@ -216,6 +221,22 @@
 			{
 				"inputs": [],
 				"name": "MathOverflowedMulDiv",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "balance",
+						"type": "uint256"
+					}
+				],
+				"name": "OUT_OF_BALANCE",
 				"type": "error"
 			},
 			{
@@ -519,6 +540,19 @@
 					}
 				],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -872,19 +906,6 @@
 				],
 				"stateMutability": "nonpayable",
 				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "wrap",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -1194,19 +1215,19 @@
 			]
 		},
 		"contracts/Pool.sol": {
-			"keccak256": "0x3b4a7b1adf55526b0a736741852f9b1f4b9470fcced9df54e9b630171f6565ed",
+			"keccak256": "0x4836836a73e4ea9eab25642a12a6d991a69752ad95fc587b36ef501ab38923ba",
 			"license": "SEE LICENSE IN LICENSE",
 			"urls": [
-				"bzz-raw://33a9030b0d964d250d436c688c96c9b9d0f98c2fa4ffff46fa9eac8d6245f4ba",
-				"dweb:/ipfs/QmW5waYTDPi17s8hoWojw3o79S9L2kv6WhgLveB8dN4iAx"
+				"bzz-raw://e2fb2a24c3d80d29a43c90a9a1cd5da0e16779e6d849d312a80d28a417fad3f4",
+				"dweb:/ipfs/QmZgt9c4VMEj6ezYHSsvM69tjM9dVcp5D8VHDTkaNoDAp8"
 			]
 		},
 		"contracts/Vault.sol": {
-			"keccak256": "0x7cb614deba44fbe310981c6d0b1c75fec52ba6bf46c3c5ce5385051a2afadb2a",
+			"keccak256": "0x350d7268c3b160291514a97433a8c8230bb8de7960276c927dd45892a4ad9676",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b700df1c7c52068b3b00cad8e0b5d9d35ed463106c36d70b99126713f7fa9ded",
-				"dweb:/ipfs/QmUjaPHw48UVNN9pvDZE5g8WbNBdYUDkXFwDiJAreZ8oHU"
+				"bzz-raw://a0150e61d41096673853d766d50d182e3367067b8013585a83d386cec54fb738",
+				"dweb:/ipfs/QmSBnMRkyaBJG9cQQozoL9BEwB3Zi6d2dGVXbjSL9XtPJQ"
 			]
 		}
 	},

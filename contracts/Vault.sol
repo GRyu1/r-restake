@@ -12,21 +12,49 @@ contract Vault is ERC4626 {
 
     event Deposit(address indexed user, uint256 amount);
 
+    error DEPRECATED_FUNCTION();
+    error OUT_OF_BALANCE(address owner, uint256 balance);
+
     constructor(address _aUSDC) ERC4626(IERC20(_aUSDC)) ERC20("Shared aUSDC","saUSDC") {
         token=IERC20(_aUSDC);
     }
 
-    function getBalanceOf() public view returns (uint256) {
+    function getBalance() public view returns (uint256) {
         return balances[msg.sender];
     }
 
-    function wrap(uint256 amount) public {
-        require(amount > 0, "Vault: Amount must be greater than 0");
-        require(token.transferFrom(msg.sender, address(this), amount), "Transfer failed");
-        balances[msg.sender] += amount;
-        //pool address
-        _mint(address(pool), amount);
-        pool.wrap(amount, msg.sender);
-        emit Deposit(msg.sender, amount);
+
+    function deposit(uint256 assets, address receiver) public override returns (uint256) {
+        require(receiver == msg.sender, "Only the msg.sender can deposit for themselves");
+        uint256 maxAssets = maxDeposit(receiver);
+        if (assets > maxAssets) {
+            revert ERC4626ExceededMaxDeposit(receiver, assets, maxAssets);
+        }
+        uint256 shares = previewDeposit(assets);
+
+        require(assets > 0, "Amount must be greater than 0");
+        require(token.transferFrom(_msgSender(), address(this), assets), "Transfer failed");
+        _mint(address(pool), assets);
+        shares = pool.deposit(assets, receiver);
+        balances[receiver] += assets;
+
+        return shares;
+    }
+
+    function withdraw(uint256 assets, address receiver, address owner) public override returns (uint256) {
+        require(receiver == msg.sender && receiver == owner, "Only the msg.sender can withdraw for themselves");
+        uint256 shares = pool.withdraw(assets, receiver, owner);
+        
+        _burn(address(pool), assets);
+        token.transfer( _msgSender(), assets);
+        balances[owner] -= assets;
+
+        return shares;
+    }
+
+
+
+    function mint(uint256 shares, address receiver) public override returns (uint256) {
+        revert DEPRECATED_FUNCTION();
     }
 }
