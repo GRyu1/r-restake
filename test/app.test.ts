@@ -45,6 +45,30 @@ describe("aUSDC", function () {
 
       await aUSDC.approve(vault.getAddress(), 10n * 10n ** 18n);
       expect(await aUSDC.allowance(owner.getAddress(), vault.getAddress())).to.equal(10n * 10n ** 18n);
+
+      await vault.deposit(10n * 10n ** 18n,owner.getAddress());
+      expect(await vault.getBalance()).to.equal(10n * 10n ** 18n)
+    });
+  });
+
+  describe("Vault withdraw Test", function () {
+    it("Should withdraw aUSDC from the vault", async function () {
+      const { aUSDC, vault, owner } = await loadFixture(deployaVaultFixture);
+
+      await aUSDC.approve(vault.getAddress(), 10n * 10n ** 18n);
+      expect(await aUSDC.allowance(owner.getAddress(), vault.getAddress())).to.equal(10n * 10n ** 18n);
+
+      await vault.deposit(10n * 10n ** 18n,owner.getAddress());
+      expect(await vault.getBalance()).to.equal(10n * 10n ** 18n);
+
+      const balanceOf = await vault.connect(owner).getBalance();
+      console.log(balanceOf);
+
+      console.log(await vault.getPoolTotalSupply());
+      console.log(await vault.getPoolTotalAssets());
+
+      await vault.withdraw(10n * 10n ** 18n,owner.getAddress(),owner.getAddress());
+      expect(await vault.getBalance()).to.equal(0)
     });
   });
 });

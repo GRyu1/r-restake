@@ -1167,11 +1167,11 @@
 			]
 		},
 		"contracts/Pool.sol": {
-			"keccak256": "0x4836836a73e4ea9eab25642a12a6d991a69752ad95fc587b36ef501ab38923ba",
+			"keccak256": "0x21b890720ce45cd977a18598f8e73e2a034d2f113c267352389acfab9c7927a8",
 			"license": "SEE LICENSE IN LICENSE",
 			"urls": [
-				"bzz-raw://e2fb2a24c3d80d29a43c90a9a1cd5da0e16779e6d849d312a80d28a417fad3f4",
-				"dweb:/ipfs/QmZgt9c4VMEj6ezYHSsvM69tjM9dVcp5D8VHDTkaNoDAp8"
+				"bzz-raw://f7a128330211ca773a0ecacda6faf40233aaabfbfd546ecef2572872a6bc29dd",
+				"dweb:/ipfs/Qmdtb3gAt6GDBvhdrkARjgSDRAn79BqQfLzH36RwCpLhRx"
 			]
 		}
 	},

@@ -7,8 +7,9 @@ import "./Pool.sol";
 
 contract Vault is ERC4626 {
     mapping(address => uint256) private balances;
+    uint256 public abc = 10;
     IERC20 public token;
-    Pool pool = new Pool(address(this));
+    Pool private pool = new Pool(address(this));
 
     event Deposit(address indexed user, uint256 amount);
 
@@ -52,9 +53,19 @@ contract Vault is ERC4626 {
         return shares;
     }
 
-
-
     function mint(uint256 shares, address receiver) public override returns (uint256) {
         revert DEPRECATED_FUNCTION();
+    }
+    
+    /////////////////////////////
+    // Test functions
+    /////////////////////////////
+
+    function getPoolTotalAssets() public view returns (uint256) {
+        return pool.totalAssets();
+    }
+
+    function getPoolTotalSupply() public view returns (uint256) {
+        return pool.totalSupply();
     }
 }

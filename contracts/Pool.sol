@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/math/Math.sol";
 
 contract Pool is ERC4626 {
     IERC20 public satoken;
-
+    bool private isDeposit = false;
     error DEPRECATED_FUNCTION();
 
 
@@ -21,14 +21,17 @@ contract Pool is ERC4626 {
     }
 
     function deposit(uint256 assets, address receiver) auth public override returns (uint256) {
+        isDeposit = true;
+
         require(assets > 0, "Amount must be greater than 0");
         uint256 maxAssets = maxDeposit(receiver);
         if (assets > maxAssets) {
             revert ERC4626ExceededMaxDeposit(receiver, assets, maxAssets);
         }
+        
         uint256 shares = previewDeposit(assets);
         _mint(receiver, shares);
-
+        isDeposit = false;
         return shares;
     }
 
@@ -55,8 +58,11 @@ contract Pool is ERC4626 {
      * @dev Internal conversion function (from assets to shares) with support for rounding direction.
      */
     function _convertToShares(uint256 assets, Math.Rounding rounding) internal view override returns (uint256) {
-        return Math.mulDiv(assets, totalSupply() + 10 ** _decimalsOffset(), totalAssets() - assets + 1, rounding);
+        if (isDeposit) {
+            return Math.mulDiv(assets, totalSupply() + 10 ** _decimalsOffset(), totalAssets() - assets + 1, rounding);
+        } else {
+            return Math.mulDiv(assets, totalSupply() + 10 ** _decimalsOffset(), totalAssets() + 1, rounding);
+        }   
     }
-
 
 }
